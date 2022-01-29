@@ -1,0 +1,65 @@
+
+.taskWrapper
+    display: grid
+    grid-template-columns: 1fr 1fr
+    align-items: baseline
+    margin-top: 80px
+    justify-items: end
+    .taskWrapper__todo
+        width: 100%
+.task
+    max-width: 900px
+    width: 100%
+    margin: auto
+
+    display: grid
+    grid-gap: 24px
+    font-size: 18px
+
+.task__item
+    box-shadow: 0px 1px 2px 0px #c9c6c2
+    padding: 10px 40px
+    border-radius: 10px
+    display: grid
+    grid-template-columns: 1fr 1fr
+
+.task__btns
+    justify-self: right
+    display: grid
+    grid-auto-flow: column
+    grid-gap: 16px
+    .btn__delite, .btn__status:hover
+        cursor: pointer
+
+    .btn__delite
+        color: #fc7878ab
+        font-size: 24px
+    .btn__status
+        font-size: 24px
+        color: #8d8d8d
+    .btn__statusDone
+        color: #27ad13
+
+.task__close
+    background: #f2fff0
+    .task__name
+        text-decoration: line-through
+
+.filters
+    display: grid
+    grid-gap: 24px
+    max-width: 400px
+    width: 100%
+    .filters__btn
+        background: #8c5ad3
+        border: 1px solid #fff
+        padding: 10px 16px
+        text-align: center
+        transition-duration: 0.5s
+        color: #fff
+        border-radius: 15px
+    .filters__btn:hover
+        cursor: pointer
+        background: #ffffff00
+        border: 1px solid #8c5ad3
+        color: #8c5ad3
