@@ -1,7 +1,7 @@
 
 .taskWrapper
     display: grid
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
     align-items: baseline
     margin-top: 80px
     justify-items: end
@@ -63,3 +63,29 @@
         background: #ffffff00
         border: 1px solid #8c5ad3
         color: #8c5ad3
+
+.optionsFilters
+    display: none
+
+@media (max-width: 1024px)
+    .filters
+        max-width: 250px
+
+@media (max-width: 660px)
+    .taskWrapper
+        margin-top: 40px
+        grid-gap: 40px
+        .taskWrapper__todo
+            width: 100%
+            order: 2
+    .filters
+        display: none
+    .optionsFilters
+        display: block
+        margin: auto
+        margin-bottom: 40px
+        border-radius: 5px
+        background: white
+        padding: 10px 40px
+        box-shadow: 0px 1px 16px 0px #8c5ad3
+        cursor: pointer

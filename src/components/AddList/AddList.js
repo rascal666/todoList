@@ -31,7 +31,12 @@ function AddList ({ getTodo, setTodo }) {
         setTodo(newTodo)
     }
     function TodoFilters (status) {
-
+        if (status == 'true') {
+            status = true
+        }
+        if (status == 'false') {
+            status = false
+        }
         if (status === 'all') {
             setCurrentStatus(getTodo)
         } else {
@@ -40,11 +45,17 @@ function AddList ({ getTodo, setTodo }) {
         }
     }
 
-
-
     return (
         <div className="taskWrapper content">
             <div className="taskWrapper__todo">
+                <select className="optionsFilters" onChange={(e) => {
+                    const optin = e.target.value
+                    TodoFilters(optin)
+                }}>
+                    <option value='all'>All task</option>
+                    <option value='false' >Сompleted tasks</option>
+                    <option value='true'>Unfinished tasks</option>
+                </select>
 
                 <div className="task">
                     {
@@ -66,7 +77,7 @@ function AddList ({ getTodo, setTodo }) {
                         ))
                     }
 
-                </ div >
+                </div>
             </div>
 
             <div className="filters">
