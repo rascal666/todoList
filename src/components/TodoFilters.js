@@ -1,24 +1,28 @@
 import React from "react";
+import todo from "../store/todo";
 
-function TodoFilters ({ getInput, setinput, currentStatus, setCurrentStatus }) {
 
-    function TodoFilters (status) {
-        console.log(status);
-        if (status === 'all') {
-            setCurrentStatus(getInput)
-        } else {
-            console.log(getInput);
-            const newTodo = [...getInput].filter(item => (item.status === status))
-            setCurrentStatus(newTodo)
-        }
-    }
+function TodoFilters () {
 
     return (
-        <div className="filters">
-            <div className="filters__btn" onClick={() => TodoFilters('all')}>All task</div>
-            <div className="filters__btn" onClick={() => TodoFilters(false)}>Сompleted tasks</div>
-            <div className="filters__btn" onClick={() => TodoFilters(true)}>Unfinished tasks</div>
-        </div >
+        <div>
+            <select className="optionsFilters" onChange={(e) => {
+                const optin = e.target.value
+                todo.TodoFilters(optin)
+            }}>
+                <option value='all'>All task</option>
+                <option value='false' >Сompleted tasks</option>
+                <option value='true'>Unfinished tasks</option>
+            </select>
+
+
+            <div className="filters">
+                <div className="filters__btn" onClick={() => todo.TodoFilters('all')}>All task</div>
+                <div className="filters__btn" onClick={() => todo.TodoFilters(false)}>Сompleted tasks</div>
+                <div className="filters__btn" onClick={() => todo.TodoFilters(true)}>Unfinished tasks</div>
+            </div >
+        </div>
+
     )
 }
 

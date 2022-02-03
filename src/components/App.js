@@ -2,32 +2,31 @@ import React from 'react';
 import '../style/style.sass'
 import TodoForm from './TodoForm';
 import AddList from './AddList';
+import TodoFilters from './TodoFilters';
+import todo from '../store/todo';
+import { observer } from 'mobx-react-lite';
 
 import { useState } from 'react'
 
 
 function App () {
-  const getlocalStorageTodo = () => {
-    const todo = localStorage.getItem('todo')
-    if (todo) {
-      return JSON.parse(todo)
-    } else {
-      return []
-    }
-  }
 
-  const [getTodo, setTodo] = useState(getlocalStorageTodo());
+
+
 
   return (
     <div className="App" >
       <div className='header'>
-        <TodoForm getTodo={getTodo} setTodo={setTodo} />
+        <TodoForm />
         <p className='header__title'>todo List</p>
       </div>
 
-      <AddList getTodo={getTodo} setTodo={setTodo} />
+      <div className='taskWrapper content'>
+        <AddList />
+        <TodoFilters />
+      </div>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
