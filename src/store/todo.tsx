@@ -8,17 +8,12 @@ export interface TodoProps{
 		title: string
 		id: string
 		status:boolean
-	}
+		}
 
-	
 class Todo {
-
-
 	todos: TodoProps [] = [];
 	todosFilter:TodoProps[] = [];
 	inputValue: string = '';
-
-
 
 	constructor() {
 		makeAutoObservable(this);

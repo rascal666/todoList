@@ -5,13 +5,8 @@ import '../style/style.sass';
 import TodoForm from './TodoForm';
 import AddList from './AddList';
 import TodoFilters from './TodoFilters';
-import todo from '../store/todo';
-import { observer } from 'mobx-react-lite';
 
 const App = () => {
-
-
-
 
 	return (
 		<div className='App'>
