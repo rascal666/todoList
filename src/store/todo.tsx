@@ -1,27 +1,30 @@
 /** @format */
-
+import React from "react";
 import { makeAutoObservable } from 'mobx';
-import { observer } from 'mobx-react-lite';
 import { v4 as uuidv4 } from 'uuid';
 
+
+export interface TodoProps{
+		title: string
+		id: string
+		status:boolean
+	}
+
+	
 class Todo {
-	todos = [];
-	todosFilter = [];
+
+
+	todos: TodoProps [] = [];
+	todosFilter:TodoProps[] = [];
 	inputValue: string = '';
 
-	// getlocalStorageTodo = () => {
-	//     const todo = localStorage.getItem('todo')
-	//     if (todo) {
-	//         return JSON.parse(todo)
-	//     } else {
-	//         return []
-	//     }
-	// }
+
 
 	constructor() {
 		makeAutoObservable(this);
 	}
-	TodoFilters(status) {
+
+	TodoFilters(status: any) {
 		if (status == 'true') {
 			status = true;
 		}
@@ -31,7 +34,7 @@ class Todo {
 		if (status === 'all') {
 			this.todosFilter = this.todos;
 		} else {
-			this.todosFilter = this.todos.filter((item) => item.status === status);
+			this.todosFilter = this.todos.filter((item) => item.status === status);		
 		}
 	}
 
@@ -46,17 +49,14 @@ class Todo {
 			this.inputValue = '';
 		}
 	}
-	keyDown(ev) {
-		if (ev.keyCode === 13) {
+
+	keyDown(event: React.KeyboardEvent) {
+		if (event.keyCode === 13) {
 			this.addTask();
 		}
 	}
 
-	handleChange(e) {
-		this.inputValue = e;
-	}
-
-	statusTask(id) {
+	statusTask(id:string) {
 		this.todos.filter((item) => {
 			if (item.id === id) {
 				item.status = !item.status;
@@ -65,7 +65,7 @@ class Todo {
 		});
 	}
 
-	deliteTask(id) {
+	deliteTask(id:string) {
 		this.todos = this.todos.filter((item) => item.id !== id);
 		this.todosFilter = this.todos;
 	}
